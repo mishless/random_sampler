@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "random_sampler"
+version = "0.1.0"
+description = "A CLI tool for random sampling from a list of numbers given discrete probabilities."
+authors = ["Mihaela Stoycheva <mihaela.stoycheva@gmail.com>"]
+readme = "README.md"
+packages = [
+	{include = "app"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<4.0"
+pytest = "^7.4.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.4.3"
+mypy = "^1.6.1"
+black = "^23.10.1"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.black]
+line_length = 90
+target_version = ['py310']
+
+[tool.mypy]
+python_version = "3.10"
+strict_optional = false
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

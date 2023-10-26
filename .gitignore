@@ -1,0 +1,4 @@
+.idea/
+.mypy_cache/
+.pytest_cache/
+./app/__pycache__/
