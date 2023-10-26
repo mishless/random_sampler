@@ -1,4 +1,4 @@
-class ZeroProbabilities(ValueError):
+class InvalidProbability(ValueError):
     pass
 
 
@@ -11,4 +11,8 @@ class InvalidProbabilitiesSum(ValueError):
 
 
 class InvalidNumberOfRuns(ValueError):
+    pass
+
+
+class EmptyInput(ValueError):
     pass

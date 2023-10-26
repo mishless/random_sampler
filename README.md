@@ -9,12 +9,12 @@ python3 -m pip install poetry
 ```
 poetry install
 ```
-- Run the tool the the desired input, e.g.:
+- Run the tool the desired input, e.g.:
 ```
 poetry run python main.py -n -1 0 1 2 3 -p 0.01 0.3 0.58 0.1 0.01 -r 100
 ```
 
-Additionally you can:
+Additionally, you can:
 
 - Run unit tests
 ```

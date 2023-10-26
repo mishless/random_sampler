@@ -4,7 +4,8 @@ from collections import Counter
 import pytest
 
 from app.exceptions import (
-    ZeroProbabilities,
+    EmptyInput,
+    InvalidProbability,
     NumbersAndProbabilitiesLengthMismatch,
     InvalidProbabilitiesSum,
     InvalidNumberOfRuns,
@@ -23,6 +24,11 @@ def seed(func):
     return wrapper
 
 
+def test_empty_list_input():
+    with pytest.raises(EmptyInput):
+        RandomNumberGenerator(numbers=[], probabilities=[])
+
+
 def test_invalid_probabilities_sum():
     with pytest.raises(InvalidProbabilitiesSum):
         RandomNumberGenerator(numbers=[1, 2, 3], probabilities=[0.5, 0.5, 0.7])
@@ -33,9 +39,19 @@ def test_length_of_numbers_and_probabilities_mismatch():
         RandomNumberGenerator(numbers=[1, 2, 3], probabilities=[0.5, 0.5])
 
 
-def test_zeros_in_probabilites():
-    with pytest.raises(ZeroProbabilities):
+def test_zero_probability():
+    with pytest.raises(InvalidProbability):
         RandomNumberGenerator(numbers=[1, 2, 3], probabilities=[0.5, 0.5, 0])
+
+
+def test_negative_probability():
+    with pytest.raises(InvalidProbability):
+        RandomNumberGenerator(numbers=[1, 2, 3], probabilities=[-0.5, 0.5, 1])
+
+
+def test_probability_grater_than_one():
+    with pytest.raises(InvalidProbability):
+        RandomNumberGenerator(numbers=[1, 2, 3], probabilities=[0.5, 0.1, 1.5])
 
 
 def test_invalid_numer_of_runs():

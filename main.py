@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
     random_number_generator = RandomNumberGenerator(args.numbers, args.probabilities)
     samples_counter = Counter(random_number_generator.sample_k(args.runs))
-    
+
     print(f"--- Results from the experiment ---")
     for number in random_number_generator.numbers:
         print(f"Number {number} drawn {samples_counter[number]} times.")
